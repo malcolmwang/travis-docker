@@ -3,8 +3,6 @@ FROM ubuntu:16.04
 ENV GIT_USER_NAME mrbuild
 ENV GIT_USER_EMAIL mrbuild@github.com
 ENV DOCKER_USER docker
-# ENV http_proxy http://127.0.0.1:3128/
-# ENV https_proxy https://127.0.0.1:3128/ --keyserver-options http-proxy="http://127.0.0.1:3128/"
 
 # Install ROS2 requirements
 #RUN locale-gen en_US en_US.UTF-8
@@ -31,15 +29,10 @@ RUN git config --global user.name $GIT_USER_NAME \
     && git config --global user.email $GIT_USER_EMAIL
 
 # Install nvm, Node.js and node-gyp
-RUN echo $HOME
-ENV NVM_DIR /.nvm
-RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash&& \
-    sudo /bin/bash -c "echo \"[[ -s \$HOME/.nvm/nvm.sh ]] && . \$HOME/.nvm/nvm.sh\" >> /etc/profile.d/npm.sh" && \
-    echo "[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh" >> $HOME/.bashrc 
-ENV PATH $HOME/.nvm/bin:$PATH
-# RUN /bin/bash -c "source $NVM_DIR/nvm.sh"
-RUN nvm install 6.10.3
-RUN nvm install -g node-gyp
+ENV NODE_VERSION 6.10.3
+RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+RUN . ~/.nvm/nvm.sh && nvm install $NODE_VERSION && nvm alias default $NODE_VERSION \
+    && nvm install -g node-gyp
 
 # Get ROS2 code
 RUN mkdir -p ~/ros2_ws/src \
