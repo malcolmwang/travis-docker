@@ -32,9 +32,12 @@ RUN git config --global user.name $GIT_USER_NAME \
 
 # Install nvm, Node.js and node-gyp
 RUN echo $HOME
-ENV NVM_DIR $HOME/.nvm
-RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-RUN /bin/bash -c "source $NVM_DIR/nvm.sh"
+ENV NVM_DIR /.nvm
+RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash&& \
+    sudo /bin/bash -c "echo \"[[ -s \$HOME/.nvm/nvm.sh ]] && . \$HOME/.nvm/nvm.sh\" >> /etc/profile.d/npm.sh" && \
+    echo "[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh" >> $HOME/.bashrc 
+ENV PATH $HOME/.nvm/bin:$PATH
+# RUN /bin/bash -c "source $NVM_DIR/nvm.sh"
 RUN nvm install 6.10.3
 RUN nvm install -g node-gyp
 
