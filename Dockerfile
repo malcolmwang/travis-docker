@@ -19,8 +19,10 @@ RUN apt-get update \
 
 # Install nvm, Node.js and node-gyp
 ENV NODE_VERSION 6.10.3
+ENV NVM_DIR $HOME/.nvm
 RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-RUN . $HOME/.nvm/nvm.sh
+RUN echo "source ${NVM_DIR}/nvm.sh" > $HOME/.bashrc && \
+    source $HOME/.bashrc
 RUN nvm install $NODE_VERSION && nvm alias default $NODE_VERSION \
     && nvm install -g node-gyp
 
