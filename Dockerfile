@@ -27,8 +27,8 @@ RUN apt-get install -y clang-format pydocstyle pyflakes python3-coverage python3
 RUN apt-get install -y libasio-dev libtinyxml2-dev
 
 # Configure git
-RUN git config --global user.name=$GIT_USER_NAME \
-    && git config --global user.email=$GIT_USER_EMAIL
+RUN git config --global user.name $GIT_USER_NAME \
+    && git config --global user.email $GIT_USER_EMAIL
 
 # Install nvm, Node.js and node-gyp
 RUN echo $HOME
