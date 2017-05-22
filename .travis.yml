@@ -1,0 +1,15 @@
+language: node_js
+
+node_js:
+  - "6.10.3"
+
+services:
+  - docker
+
+branches:
+  only:
+  - master
+
+before_install:
+  - sudo docker pull ubuntu:16.04
+  - sudo docker build -t travis-docker .
