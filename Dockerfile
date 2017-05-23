@@ -30,7 +30,7 @@ RUN apt-get install -y build-essential cppcheck cmake libopencv-dev libpoco-dev 
 
 # Dependencies for testing
 RUN apt-get install -y clang-format pydocstyle pyflakes python3-coverage python3-mock python3-pep8 uncrustify \
-    pip3 install flake8 flake8-import-order
+    && pip3 install flake8 flake8-import-order
 # Dependencies for FastRTPS
 RUN apt-get install -y libasio-dev libtinyxml2-dev
 
