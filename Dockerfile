@@ -25,7 +25,7 @@ RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.s
     && nvm install $NODE_VERSION && nvm alias default $NODE_VERSION \
     && npm install -g node-gyp
 
-RUN apt-get install -y build-essential cppcheck cmake libopencv-dev libpoco-dev libpocofoundation9v5 libpocofoundation9v5-dbg python-empy python3-dev python3-empy python3-nose python3-pip python3-setuptools python3-vcstool libtinyxml-dev libeigen3-dev
+RUN apt-get update && apt-get install -y build-essential cppcheck cmake libopencv-dev libpoco-dev libpocofoundation9v5 libpocofoundation9v5-dbg python-empy python3-dev python3-empy python3-nose python3-pip python3-setuptools python3-vcstool libtinyxml-dev libeigen3-dev
 
 # Dependencies for testing
 RUN apt-get install -y clang-format pydocstyle pyflakes python3-coverage python3-mock python3-pep8 uncrustify \
