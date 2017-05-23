@@ -7,8 +7,9 @@ ENV DOCKER_USER docker
 RUN apt-get update && apt-get install -y git wget locales
 
 # Install ROS2 requirements
-RUN locale-gen en_US en_US.UTF-8
-RUN update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+RUN locale-gen en_US en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+
+ENV LANG en_US.UTF-8
 
 RUN /bin/bash -c 'echo "deb http://packages.ros.org/ros/ubuntu xenial main" > /etc/apt/sources.list.d/ros-latest.list'
 RUN apt-key adv  --keyserver ha.pool.sks-keyservers.net --recv-keys 421C365BD9FF1F717815A3895523BAEEB01FA116
@@ -44,7 +45,7 @@ RUN mkdir -p ~/ros2_ws/src \
     && vcs import src < ros2.repos
 
 # Build ROS2
-RUN locale-gen en_US en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 && cd ~/ros2_ws/ && src/ament/ament_tools/scripts/ament.py build --build-tests --symlink-install
+RUN cd ~/ros2_ws/ && src/ament/ament_tools/scripts/ament.py build --build-tests --symlink-install
 RUN . ~/ros2_ws/install/local_setup.bash
 
 
