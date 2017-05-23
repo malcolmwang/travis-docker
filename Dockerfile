@@ -22,7 +22,7 @@ ENV NODE_VERSION 6.10.3
 ENV NVM_DIR $HOME/.nvm
 RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash \
     && echo "[ -s /.nvm/nvm.sh ] && . /.nvm/nvm.sh" >> $HOME/.bashrc \
-    && . /.nvm/nvm.sh
+    && . /.nvm/nvm.sh \
     && nvm install $NODE_VERSION && nvm alias default $NODE_VERSION \
     && nvm install -g node-gyp
 
@@ -46,7 +46,7 @@ RUN mkdir -p ~/ros2_ws/src \
 
 # Build ROS2
 RUN cd ~/ros2_ws/ && src/ament/ament_tools/scripts/ament.py build --build-tests --symlink-install
-RUN sources ~/ros2_ws/install/local_setup.bash
+RUN . ~/ros2_ws/install/local_setup.bash
 
 
 
