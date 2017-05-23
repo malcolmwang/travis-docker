@@ -44,7 +44,7 @@ RUN mkdir -p ~/ros2_ws/src \
     && vcs import src < ros2.repos
 
 # Build ROS2
-RUN cd ~/ros2_ws/ && src/ament/ament_tools/scripts/ament.py build --build-tests --symlink-install
+RUN locale-gen en_US en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 && cd ~/ros2_ws/ && src/ament/ament_tools/scripts/ament.py build --build-tests --symlink-install
 RUN . ~/ros2_ws/install/local_setup.bash
 
 
