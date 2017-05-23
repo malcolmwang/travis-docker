@@ -23,7 +23,7 @@ ENV NVM_DIR $HOME/.nvm
 RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash \
     && /bin/bash -c "echo \"[[ -s \$HOME/.nvm/nvm.sh ]] && . \$HOME/.nvm/nvm.sh\" >> /etc/profile.d/npm.sh" \
     && echo "[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh" >> $HOME/.bashrc \
-    && source $HOME/.nvm/nvm.sh
+    && . $HOME/.nvm/nvm.sh
 RUN nvm install $NODE_VERSION && nvm alias default $NODE_VERSION \
     && nvm install -g node-gyp
 
