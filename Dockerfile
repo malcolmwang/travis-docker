@@ -22,8 +22,8 @@ ENV NODE_VERSION 6.10.3
 ENV NVM_DIR $HOME/.nvm
 RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash \
     && /bin/bash -c "echo \"[[ -s \$HOME/.nvm/nvm.sh ]] && . \$HOME/.nvm/nvm.sh\" >> /etc/profile.d/npm.sh" \
-    && echo "[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh" >> $HOME/.bashrc
-
+    && echo "[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh" >> $HOME/.bashrc \
+    && source $HOME/.nvm/nvm.sh
 RUN nvm install $NODE_VERSION && nvm alias default $NODE_VERSION \
     && nvm install -g node-gyp
 
@@ -31,7 +31,7 @@ RUN apt-get install -y build-essential cppcheck cmake libopencv-dev libpoco-dev 
 
 # Dependencies for testing
 RUN apt-get install -y clang-format pydocstyle pyflakes python3-coverage python3-mock python3-pep8 uncrustify \
-    && pip3 install flake8 flake8-import-order
+    pip3 install flake8 flake8-import-order
 # Dependencies for FastRTPS
 RUN apt-get install -y libasio-dev libtinyxml2-dev
 
