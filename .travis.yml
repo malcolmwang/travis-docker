@@ -11,5 +11,8 @@ branches:
   - master
 
 before_install:
-  - sudo docker pull ubuntu:16.04
-  - sudo docker build -t travis-docker .
+  - sudo docker pull ubuntu:xenial
+  - sudo docker build -t rclnodejs .
+  - sudo docker run --rm rclnodejs bash -c "npm install eslint"
+
+script:
