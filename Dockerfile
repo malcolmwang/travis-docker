@@ -20,7 +20,7 @@ RUN /bin/versions/node/v6.10.3/bin/node -v
 
 RUN "which npm"
 
-ENV PATH `which node`:$PATH
+#ENV PATH `which node`:$PATH
 
 RUN /bin/bash -c "echo $PATH"
-RUN /bin/bash -c "echo `which npm`"
+#RUN /bin/bash -c "echo `which npm`"
