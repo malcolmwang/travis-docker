@@ -20,5 +20,5 @@ RUN /bin/versions/node/v6.10.3/bin/node -v
 
 ENV PATH `which node`:$PATH
 
-RUN /bin/bash -c "ehco $PATH"
+RUN /bin/bash -c "echo $PATH"
 RUN /bin/bash -c "echo `which npm`"
