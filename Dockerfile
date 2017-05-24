@@ -18,6 +18,8 @@ RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.s
     
 RUN /bin/versions/node/v6.10.3/bin/node -v
 
+RUN which npm
+
 ENV PATH `which node`:$PATH
 
 RUN /bin/bash -c "echo $PATH"
