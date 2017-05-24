@@ -13,7 +13,11 @@ RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.s
     && . $HOME/.nvm/nvm.sh \
     && nvm install $NODE_VERSION && nvm alias default $NODE_VERSION \
     && npm install -g node-gyp \
-    && which node
+    && which node \
+    && which npm
     
 RUN /bin/versions/node/v6.10.3/bin/node -v
 
+ENV PATH `which node`:$PATH
+
+RUN ehco $PATH
