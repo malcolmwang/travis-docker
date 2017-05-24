@@ -15,5 +15,5 @@ RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.s
     && npm install -g node-gyp \
     && which node
     
-RUN which node
+RUN /bin/versions/node/v6.10.3/bin/node -v
 
