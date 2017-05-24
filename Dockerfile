@@ -5,7 +5,7 @@ ENV GIT_USER_EMAIL mrbuild@github.com
 ENV DOCKER_USER docker
 ENV LANG en_US.UTF-8
 
-RUN apt-get update && apt-get install -y git wget locales
+RUN apt-get update && apt-get install -y git wget locales sudo
 
 # Install nvm, Node.js and node-gyp
 ENV NODE_VERSION 6.10.3
