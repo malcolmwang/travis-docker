@@ -13,6 +13,6 @@ branches:
 before_install:
   - sudo docker pull ubuntu:xenial
   - sudo docker build -t rclnodejs .
-  - sudo docker run --rm rclnodejs bash -c "/root/.nvm/versions/node/v6.10.3/bin/npm install eslint"
+  - sudo docker run --rm rclnodejs bash -c "ls /root/.nvm/versions/node/"
 
 script:
