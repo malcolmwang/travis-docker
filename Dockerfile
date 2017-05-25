@@ -22,6 +22,6 @@ RUN /bin/versions/node/v6.10.3/bin/node -v
 #RUN "which npm"
 
 #ENV PATH `which node`:$PATH
-
+ENV PATH /bin/versions/node/v6.10.3/bin/:$PATH
 RUN /bin/bash -c "echo $PATH"
 #RUN /bin/bash -c "echo `which npm`"
