@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y git wget locales sudo
 # Install nvm, Node.js and node-gyp
 ENV NODE_VERSION 6.10.3
 RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash \
+    && echo '[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh' >> $HOME/.bashrc \
     && . $HOME/.nvm/nvm.sh \
     && nvm install $NODE_VERSION && nvm alias default $NODE_VERSION \
     && npm install -g node-gyp \
