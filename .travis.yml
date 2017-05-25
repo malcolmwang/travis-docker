@@ -13,6 +13,6 @@ branches:
 before_install:
   - sudo docker pull ubuntu:xenial
   - sudo docker build -t rclnodejs .
-  - sudo docker run --rm rclnodejs bash -i -c 'nvm install 6.10.3 && npm -v && node -v'
+  - sudo docker run --rm rclnodejs bash -i -c 'npm -v && node -v'
 
 script:
