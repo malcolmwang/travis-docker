@@ -1,8 +1,5 @@
 language: node_js
 
-node_js:
-  - "6.10.3"
-
 services:
   - docker
 
@@ -13,6 +10,6 @@ branches:
 before_install:
   - sudo docker pull ubuntu:xenial
   - sudo docker build -t rclnodejs .
-  - sudo docker run --rm rclnodejs bash -i -c 'npm -v && node -v'
 
 script:
+  - sudo docker run --rm rclnodejs bash -i -c 'npm -v && node -v'
